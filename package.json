@@ -1,0 +1,19 @@
+{
+  "name": "project-ledger-docs",
+  "version": "1.0.0",
+  "description": "API documentation for ProjectLedger platform",
+  "main": "api/index.js",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
