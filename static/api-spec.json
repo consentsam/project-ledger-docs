@@ -11,11 +11,11 @@
   },
   "servers": [
     {
-      "url": "https://learn-ledger-docs-l74txgukg-consentsams-projects.vercel.app",
+      "url": "https://learn-ledger-docs-l74txgukg-consentsams-projects.vercel.app/api",
       "description": "Production server"
     },
     {
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3000/api",
       "description": "Local development server"
     }
   ],
@@ -168,7 +168,7 @@
     "securitySchemes": {}
   },
   "paths": {
-    "/api/register": {
+    "/register": {
       "post": {
         "tags": [
           "Register"

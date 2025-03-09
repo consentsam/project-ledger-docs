@@ -2,6 +2,9 @@ const { getPool } = require('./db');
 
 // Sample register endpoint matching the OpenAPI spec
 module.exports = async (req, res) => {
+  console.log('Register API called with method:', req.method);
+  console.log('Request body:', req.body);
+  
   // Enable CORS for all origins
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -13,12 +16,14 @@ module.exports = async (req, res) => {
   
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
+    console.log('Handling OPTIONS request for CORS preflight');
     return res.status(200).end();
   }
   
   try {
     // Only allow POST requests
     if (req.method !== 'POST') {
+      console.log('Method not allowed:', req.method);
       return res.status(405).json({
         isSuccess: false,
         message: 'Method not allowed',
@@ -30,6 +35,22 @@ module.exports = async (req, res) => {
     // In a real application, you would validate input and store in database
     
     const body = req.body || {};
+    console.log('Processing body:', body);
+    
+    // Handle empty body - might happen with content-type issues
+    if (Object.keys(body).length === 0) {
+      console.log('Empty request body received');
+      // Try to parse the body from the raw request if possible
+      try {
+        const rawBody = req.rawBody || '';
+        if (rawBody && typeof rawBody === 'string' && rawBody.trim()) {
+          console.log('Attempting to parse raw body:', rawBody);
+          body = JSON.parse(rawBody);
+        }
+      } catch (parseError) {
+        console.error('Error parsing raw body:', parseError);
+      }
+    }
     
     // Validate required fields
     const errors = {};
@@ -57,6 +78,7 @@ module.exports = async (req, res) => {
     
     // Return validation errors if any
     if (Object.keys(errors).length > 0) {
+      console.log('Validation errors:', errors);
       return res.status(400).json({
         isSuccess: false,
         message: 'Validation failed',
@@ -66,6 +88,7 @@ module.exports = async (req, res) => {
     
     // Simulate successful registration with a mock profile ID
     const profileId = 'f290c15c-a0bf-494a-8df0-05e94aa3b89f';
+    console.log('Registration successful with profile ID:', profileId);
     
     return res.status(200).json({
       isSuccess: true,
