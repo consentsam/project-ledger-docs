@@ -11,11 +11,11 @@
   },
   "servers": [
     {
-      "url": "https://learn-ledger-docs-8ebbanj80-consentsams-projects.vercel.app/api",
+      "url": "https://learn-ledger-docs-l74txgukg-consentsams-projects.vercel.app",
       "description": "Production server"
     },
     {
-      "url": "http://localhost:3000/api",
+      "url": "http://localhost:3000",
       "description": "Local development server"
     }
   ],

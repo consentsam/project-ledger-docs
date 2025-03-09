@@ -13,15 +13,27 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/api/$1"
+            "dest": "/api/$1",
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+            }
         },
         {
             "src": "/(.*)",
-            "dest": "/static/$1"
+            "dest": "/static/$1",
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
         },
         {
             "src": "/",
-            "dest": "/static/index.html"
+            "dest": "/static/index.html",
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
         }
-    ]
+    ],
+    "public": true
 }

@@ -1,17 +1,27 @@
 const { getPool } = require('./db');
 
 module.exports = async (req, res) => {
-  // Enable CORS
+  // Enable CORS for all origins
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization'
   );
   
+  // Handle preflight requests
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
+  }
+  
+  // Add a health check endpoint
+  if (req.url === '/api/health' || req.url === '/health') {
+    return res.status(200).json({
+      isSuccess: true,
+      message: 'API is healthy',
+      timestamp: new Date().toISOString()
+    });
   }
   
   try {
@@ -48,7 +58,8 @@ module.exports = async (req, res) => {
       message: 'API is working',
       data: {
         apiVersion: '1.0.0',
-        message: 'Welcome to ProjectLedger API'
+        message: 'Welcome to ProjectLedger API',
+        documentation: 'View the API documentation by visiting the root URL'
       }
     });
   } catch (error) {
