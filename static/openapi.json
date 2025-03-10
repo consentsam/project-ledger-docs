@@ -110,7 +110,7 @@
             "WalletAddress": {
                 "type": "string",
                 "pattern": "^0x[a-fA-F0-9]{40}$",
-                "example": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+                "example": "0x742d35cc6634c0532925a3b844bc454e4438f44e"
             },
             "Project": {
                 "type": "object",
@@ -192,14 +192,15 @@
                     "id": {
                         "type": "string",
                         "format": "uuid",
-                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                        "example": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc"
                     },
                     "companyName": {
                         "type": "string",
                         "example": "Blockchain Innovations Inc."
                     },
                     "walletAddress": {
-                        "$ref": "#/components/schemas/WalletAddress"
+                        "$ref": "#/components/schemas/WalletAddress",
+                        "example": "0x742d35cc6634c0532925a3b844bc454e4438f44e"
                     },
                     "companyWebsite": {
                         "type": "string",
@@ -208,11 +209,21 @@
                     },
                     "createdAt": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "example": "2025-03-10T07:19:03.882Z"
                     },
                     "updatedAt": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "example": "2025-03-10T07:19:03.882Z"
+                    },
+                    "shortDescription": {
+                        "type": "string",
+                        "example": ""
+                    },
+                    "logoUrl": {
+                        "type": "string",
+                        "example": ""
                     }
                 },
                 "required": [
@@ -369,14 +380,14 @@
                             "id": {
                                 "type": "string",
                                 "format": "uuid",
-                                "example": "2c58380e-00d3-4919-bd26-76e6e7ef9527"
+                                "example": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc"
                             },
                             "walletAddress": {
                                 "$ref": "#/components/schemas/WalletAddress"
                             },
                             "companyName": {
                                 "type": "string",
-                                "example": "Test Company"
+                                "example": "Blockchain Innovations Inc."
                             },
                             "shortDescription": {
                                 "type": "string",
@@ -390,12 +401,12 @@
                             "createdAt": {
                                 "type": "string",
                                 "format": "date-time",
-                                "example": "2025-03-10T09:14:25.763Z"
+                                "example": "2025-03-10T07:19:03.882Z"
                             },
                             "updatedAt": {
                                 "type": "string",
                                 "format": "date-time",
-                                "example": "2025-03-10T09:14:25.763Z"
+                                "example": "2025-03-10T07:19:03.882Z"
                             }
                         },
                         "required": [
@@ -1024,14 +1035,47 @@
                                     "properties": {
                                         "isSuccess": {
                                             "type": "boolean",
-                                            "example": true
+                                            "example": false
                                         },
                                         "message": {
                                             "type": "string",
-                                            "example": "Successfully registered profile"
+                                            "example": "Freelancer profile with this wallet address already exists"
                                         },
-                                        "data": {
-                                            "$ref": "#/components/schemas/UserProfile"
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {
+                                                "walletAddress": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "This wallet address is already registered with a profile"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "actual": {
+                                        "value": {
+                                            "isSuccess": false,
+                                            "message": "Freelancer profile with this wallet address already exists",
+                                            "errors": {
+                                                "walletAddress": [
+                                                    "This wallet address is already registered with a profile"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "response": {
+                                        "value": {
+                                            "isSuccess": false,
+                                            "message": "Freelancer profile with this wallet address already exists",
+                                            "errors": {
+                                                "walletAddress": [
+                                                    "This wallet address is already registered with a profile"
+                                                ]
+                                            }
                                         }
                                     }
                                 }
@@ -1039,7 +1083,49 @@
                         }
                     },
                     "400": {
-                        "$ref": "#/components/responses/BadRequest"
+                        "$ref": "#/components/responses/BadRequest",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "isSuccess": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation failed"
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {
+                                                "freelancerName": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Freelancer name is required for freelancer profiles"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "isSuccess": false,
+                                            "message": "Validation failed",
+                                            "errors": {
+                                                "freelancerName": [
+                                                    "Freelancer name is required for freelancer profiles"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "409": {
                         "description": "Conflict - User already registered",
@@ -1095,14 +1181,84 @@
                                             "example": true
                                         },
                                         "data": {
-                                            "oneOf": [
-                                                {
-                                                    "$ref": "#/components/schemas/Company"
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "format": "uuid",
+                                                    "example": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc"
                                                 },
-                                                {
-                                                    "$ref": "#/components/schemas/Freelancer"
+                                                "walletAddress": {
+                                                    "type": "string",
+                                                    "example": "0x742d35cc6634c0532925a3b844bc454e4438f44e"
+                                                },
+                                                "companyName": {
+                                                    "type": "string",
+                                                    "example": "Blockchain Innovations Inc."
+                                                },
+                                                "shortDescription": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "createdAt": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-10T07:19:03.882Z"
+                                                },
+                                                "updatedAt": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-10T07:19:03.882Z"
                                                 }
-                                            ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "company": {
+                                        "value": {
+                                            "isSuccess": true,
+                                            "data": {
+                                                "id": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc",
+                                                "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f44e",
+                                                "companyName": "Blockchain Innovations Inc.",
+                                                "shortDescription": "",
+                                                "logoUrl": "",
+                                                "createdAt": "2025-03-10T07:19:03.882Z",
+                                                "updatedAt": "2025-03-10T07:19:03.882Z"
+                                            }
+                                        }
+                                    },
+                                    "actual": {
+                                        "value": {
+                                            "isSuccess": true,
+                                            "data": {
+                                                "id": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc",
+                                                "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f44e",
+                                                "companyName": "Blockchain Innovations Inc.",
+                                                "shortDescription": "",
+                                                "logoUrl": "",
+                                                "createdAt": "2025-03-10T07:19:03.882Z",
+                                                "updatedAt": "2025-03-10T07:19:03.882Z"
+                                            }
+                                        }
+                                    },
+                                    "response": {
+                                        "value": {
+                                            "isSuccess": true,
+                                            "data": {
+                                                "id": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc",
+                                                "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f44e",
+                                                "companyName": "Blockchain Innovations Inc.",
+                                                "shortDescription": "",
+                                                "logoUrl": "",
+                                                "createdAt": "2025-03-10T07:19:03.882Z",
+                                                "updatedAt": "2025-03-10T07:19:03.882Z"
+                                            }
                                         }
                                     }
                                 }
@@ -1110,7 +1266,32 @@
                         }
                     },
                     "400": {
-                        "$ref": "#/components/responses/BadRequest"
+                        "$ref": "#/components/responses/BadRequest",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "isSuccess": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Missing required query parameters: wallet and role"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "isSuccess": false,
+                                            "message": "Missing required query parameters: wallet and role"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
                         "$ref": "#/components/responses/NotFound"
@@ -1289,7 +1470,22 @@
                                             "example": true
                                         },
                                         "data": {
-                                            "$ref": "#/components/schemas/ProjectList"
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "actual": {
+                                        "value": {
+                                            "isSuccess": true,
+                                            "data": []
+                                        }
+                                    },
+                                    "response": {
+                                        "value": {
+                                            "isSuccess": true,
+                                            "data": []
                                         }
                                     }
                                 }
@@ -1397,7 +1593,32 @@
                         }
                     },
                     "404": {
-                        "$ref": "#/components/responses/NotFound"
+                        "$ref": "#/components/responses/NotFound",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "isSuccess": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Project not found"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "isSuccess": false,
+                                            "message": "Project not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "500": {
                         "$ref": "#/components/responses/ServerError"

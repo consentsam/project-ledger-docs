@@ -59,8 +59,26 @@ curl -X 'POST' \
 
 ```bash
 curl -X 'GET' \
-  'https://learn-ledger-api.vercel.app/api/userProfile?wallet=0x742d35Cc6634C0532925a3b844Bc454e4438f44e&role=freelancer' \
+  'https://learn-ledger-api.vercel.app/api/userProfile?wallet=0x742d35Cc6634C0532925a3b844Bc454e4438f44e&role=company' \
   -H 'accept: application/json'
+```
+
+> ⚠️ **Note**: Both `wallet` and `role` query parameters are required for this endpoint. The `role` parameter must be either "company" or "freelancer".
+
+Example response:
+```json
+{
+  "isSuccess": true,
+  "data": {
+    "id": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc",
+    "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f44e",
+    "companyName": "Blockchain Innovations Inc.",
+    "shortDescription": "",
+    "logoUrl": "",
+    "createdAt": "2025-03-10T07:19:03.882Z",
+    "updatedAt": "2025-03-10T07:19:03.882Z"
+  }
+}
 ```
 
 ### Update User Profile
@@ -202,4 +220,4 @@ curl -X 'POST' \
   "submissionId": "123e4567-e89b-12d3-a456-426614174000",
   "companyWallet": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 }'
-``` 
+```
