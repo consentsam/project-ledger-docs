@@ -999,7 +999,12 @@
                                 },
                                 "example": {
                                     "isSuccess": false,
-                                    "message": "User already registered with this wallet address"
+                                    "message": "Freelancer profile with this wallet address already exists",
+                                    "errors": {
+                                        "walletAddress": [
+                                            "This wallet address is already registered with a profile"
+                                        ]
+                                    }
                                 }
                             }
                         }
