@@ -239,6 +239,7 @@
                     },
                     "skills": {
                         "type": "string",
+                        "description": "Skills for freelancer profiles (comma-separated string)",
                         "example": "JavaScript, React, Web3"
                     },
                     "createdAt": {

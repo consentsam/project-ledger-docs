@@ -21,7 +21,7 @@ curl -X 'POST' \
 
 ### Register a Freelancer
 
-> ⚠️ **Known Issue**: There's a naming discrepancy between the API validation and the database schema. The API validation requires `freelancerName` in the request even though the database column is named `name`. You must use `freelancerName` as shown below.
+> ⚠️ **Important Note**: The API expects `skills` to be a comma-separated string, not an array.
 
 ```bash
 curl -X 'POST' \
@@ -32,7 +32,7 @@ curl -X 'POST' \
   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   "role": "freelancer",
   "freelancerName": "John Doe",
-  "skills": ["JavaScript", "React", "Web3"]
+  "skills": "JavaScript, React, Web3"
 }'
 ```
 
@@ -61,7 +61,7 @@ curl -X 'PUT' \
 
 ### Update Freelancer Profile
 
-> ⚠️ **Known Issue**: Similar to registration, use `freelancerName` for updating profiles.
+> ⚠️ **Important Note**: The API expects `skills` to be a comma-separated string, not an array.
 
 ```bash
 curl -X 'PUT' \
@@ -72,7 +72,7 @@ curl -X 'PUT' \
   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   "role": "freelancer",
   "freelancerName": "Updated Name",
-  "skills": ["JavaScript", "React", "Web3", "Solidity"]
+  "skills": "JavaScript, React, Web3, Solidity"
 }'
 ```
 
@@ -91,7 +91,7 @@ curl -X 'POST' \
   "projectLink": "https://github.com/example/web3-auth",
   "prizeAmount": 1000,
   "projectOwner": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-  "requiredSkills": ["JavaScript", "React", "Web3"]
+  "requiredSkills": "JavaScript, React, Web3"
 }'
 ```
 

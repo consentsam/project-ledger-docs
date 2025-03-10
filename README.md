@@ -15,22 +15,24 @@ This repository contains the API documentation for the ProjectLedger platform, r
 
 The API specification has been updated to use `role` instead of `userType` for user registration and profile management. This change ensures compatibility with the current API implementation.
 
-## Important Note for Freelancer Registration
+## Important Notes for API Usage
 
-⚠️ **Known Issue**: There is currently a naming discrepancy in the API's freelancer registration process. The API validation expects `freelancerName` in the request, but the database uses a column named `name`. 
+### Freelancer Registration
 
-For now, you must use the `freelancerName` field in your API requests:
+When registering a freelancer profile, make sure to use the following format:
 
 ```json
 {
   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   "role": "freelancer",
   "freelancerName": "John Doe",
-  "skills": ["JavaScript", "React", "Web3"]
+  "skills": "JavaScript, React, Web3"
 }
 ```
 
-The development team is working to resolve this inconsistency.
+Key points to remember:
+- The field name for the freelancer's name is `freelancerName`
+- `skills` should be a comma-separated string, not an array
 
 ## Local Development
 
