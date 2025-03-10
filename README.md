@@ -5,12 +5,28 @@ This repository contains the API documentation for the ProjectLedger platform, r
 ## Structure
 
 - `/static` - Static documentation files using Swagger UI
+  - `openapi.json` - The complete OpenAPI specification
+  - `index.html` - Main documentation page
+  - `how-to-use.html` - Guide for using the API
 - `/api` - Optional API endpoints for PostgreSQL connection testing
 - `CURL-EXAMPLES.md` - Examples of curl commands for interacting with the API
 
 ## API Updates
 
 The API specification has been updated to use `role` instead of `userType` for user registration and profile management. This change ensures compatibility with the current API implementation.
+
+## Important Note for Freelancer Registration
+
+When registering a freelancer profile, make sure to use the `freelancerName` field (not `name`) as shown in the example below:
+
+```json
+{
+  "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+  "role": "freelancer",
+  "freelancerName": "John Doe",
+  "skills": ["JavaScript", "React", "Web3"]
+}
+```
 
 ## Local Development
 

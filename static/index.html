@@ -54,7 +54,7 @@
     <h1>ProjectLedger API</h1>
     <div class="links">
       <a href="https://github.com/your-repo/project-ledger" target="_blank">GitHub</a>
-      <a href="./api-spec.json" target="_blank">Download OpenAPI Spec</a>
+      <a href="./openapi.json" target="_blank">Download OpenAPI Spec</a>
     </div>
   </div>
   
@@ -65,7 +65,7 @@
   <script>
     window.onload = function() {
       // Fetch the API spec from the JSON file
-      fetch('./api-spec.json')
+      fetch('./openapi.json')
         .then(response => response.json())
         .then(spec => {
           // Initialize Swagger UI
@@ -88,7 +88,7 @@
           document.getElementById('swagger-ui').innerHTML = `
             <div style="padding: 2rem; color: red;">
               <h2>Error Loading API Documentation</h2>
-              <p>Could not load the API specification. Please check if api-spec.json is available.</p>
+              <p>Could not load the API specification. Please check if openapi.json is available.</p>
               <p>Error details: ${error.message}</p>
             </div>
           `;
