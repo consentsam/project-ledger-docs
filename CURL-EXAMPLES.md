@@ -21,23 +21,6 @@ curl -X 'POST' \
 
 ### Register a Freelancer
 
-> **⚠️ Warning**: Freelancer registration currently fails with a 500 error due to a database mismatch. The API expects `freelancerName` but the database column is named `name`. This is a known issue on the server side.
->
-> **Workaround**: Try the following alternative that uses `name` instead of `freelancerName`:
->
-> ```bash
-> curl -X 'POST' \
->   'https://learn-ledger-api.vercel.app/api/register' \
->   -H 'accept: application/json' \
->   -H 'Content-Type: application/json' \
->   -d '{
->   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
->   "role": "freelancer",
->   "name": "John Doe",
->   "skills": ["JavaScript", "React", "Web3"]
-> }'
-> ```
-
 ```bash
 curl -X 'POST' \
   'https://learn-ledger-api.vercel.app/api/register' \
@@ -46,7 +29,7 @@ curl -X 'POST' \
   -d '{
   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   "role": "freelancer",
-  "freelancerName": "John Doe",
+  "name": "John Doe",
   "skills": ["JavaScript", "React", "Web3"]
 }'
 ```
@@ -76,23 +59,6 @@ curl -X 'PUT' \
 
 ### Update Freelancer Profile
 
-> **⚠️ Warning**: Updating freelancer profiles might fail with a 500 error due to a database mismatch. The API expects `freelancerName` but the database column is named `name`. This is a known issue on the server side.
->
-> **Workaround**: Try the following alternative that uses `name` instead of `freelancerName`:
->
-> ```bash
-> curl -X 'PUT' \
->   'https://learn-ledger-api.vercel.app/api/userProfile' \
->   -H 'accept: application/json' \
->   -H 'Content-Type: application/json' \
->   -d '{
->   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
->   "role": "freelancer",
->   "name": "Updated Name",
->   "skills": ["JavaScript", "React", "Web3", "Solidity"]
-> }'
-> ```
-
 ```bash
 curl -X 'PUT' \
   'https://learn-ledger-api.vercel.app/api/userProfile' \
@@ -101,7 +67,7 @@ curl -X 'PUT' \
   -d '{
   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   "role": "freelancer",
-  "freelancerName": "Updated Name",
+  "name": "Updated Name",
   "skills": ["JavaScript", "React", "Web3", "Solidity"]
 }'
 ```
