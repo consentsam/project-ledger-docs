@@ -239,7 +239,7 @@
                     },
                     "skills": {
                         "type": "string",
-                        "description": "Skills for freelancer profiles (comma-separated string)",
+                        "description": "Skills for freelancer profiles (comma-separated string). Can be provided as an array during API calls, but will be converted to a comma-separated string for storage.",
                         "example": "JavaScript, React, Web3"
                     },
                     "createdAt": {
@@ -600,16 +600,26 @@
                                             "example": "John Doe"
                                         },
                                         "skills": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            },
-                                            "description": "Skills for freelancer profiles",
-                                            "example": [
-                                                "JavaScript",
-                                                "React",
-                                                "Web3"
-                                            ]
+                                            "oneOf": [
+                                                {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": "Skills for freelancer profiles as an array of strings",
+                                                    "example": [
+                                                        "JavaScript",
+                                                        "React",
+                                                        "Web3"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "description": "Skills for freelancer profiles as a comma-separated string",
+                                                    "example": "JavaScript, React, Web3"
+                                                }
+                                            ],
+                                            "description": "Skills can be provided either as an array of strings or as a comma-separated string"
                                         }
                                     },
                                     "required": [
