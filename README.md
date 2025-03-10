@@ -6,6 +6,11 @@ This repository contains the API documentation for the ProjectLedger platform, r
 
 - `/static` - Static documentation files using Swagger UI
 - `/api` - Optional API endpoints for PostgreSQL connection testing
+- `CURL-EXAMPLES.md` - Examples of curl commands for interacting with the API
+
+## API Updates
+
+The API specification has been updated to use `role` instead of `userType` for user registration and profile management. This change ensures compatibility with the current API implementation.
 
 ## Local Development
 
@@ -20,6 +25,14 @@ python -m http.server
 ```
 
 Then navigate to `http://localhost:5000/static/index.html` or whichever port your server is running on.
+
+## Using the API with curl
+
+For examples of how to interact with the API using curl, please refer to the [CURL-EXAMPLES.md](./CURL-EXAMPLES.md) file. This includes examples for:
+
+- User registration and profile management
+- Project creation and management
+- Submission handling
 
 ## Deployment to Vercel
 
