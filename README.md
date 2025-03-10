@@ -1,6 +1,6 @@
-# ProjectLedger Documentation Deployment
+# LearnLedger Documentation Deployment
 
-This repository contains the API documentation for the ProjectLedger platform, ready to be deployed on Vercel.
+This repository contains the API documentation for the LearnLedger platform, ready to be deployed on Vercel.
 
 ## Structure
 
@@ -126,4 +126,4 @@ To use a custom domain:
 
 ## Need Help?
 
-For assistance with this deployment, contact the ProjectLedger development team. 
+For assistance with this deployment, contact the LearnLedger development team. 

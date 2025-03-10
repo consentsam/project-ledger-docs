@@ -58,7 +58,7 @@ module.exports = async (req, res) => {
       message: 'API is working',
       data: {
         apiVersion: '1.0.0',
-        message: 'Welcome to ProjectLedger API',
+        message: 'Welcome to LearnLedger API',
         documentation: 'View the API documentation by visiting the root URL'
       }
     });

@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ProjectLedger API",
-    "description": "API documentation for the ProjectLedger platform. This API enables interaction with projects, users, submissions, and other resources in the ProjectLedger ecosystem.",
+    "title": "LearnLedger API",
+    "description": "API documentation for the LearnLedger platform. This API enables interaction with projects, users, submissions, and other resources in the LearnLedger ecosystem.",
     "version": "1.0.0",
     "contact": {
-      "name": "ProjectLedger Support",
-      "email": "support@projectledger.com"
+      "name": "LearnLedger Support",
+      "email": "support@LearnLedger.com"
     }
   },
   "servers": [

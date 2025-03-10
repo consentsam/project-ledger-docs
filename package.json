@@ -1,7 +1,7 @@
 {
   "name": "project-ledger-docs",
   "version": "1.0.0",
-  "description": "API documentation for ProjectLedger platform",
+  "description": "API documentation for LearnLedger platform",
   "main": "api/index.js",
   "scripts": {
     "build": "echo 'No build step required'"
