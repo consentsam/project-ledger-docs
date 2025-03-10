@@ -59,7 +59,7 @@ curl -X 'POST' \
 
 ```bash
 curl -X 'GET' \
-  'https://learn-ledger-api.vercel.app/api/userProfile?walletAddress=0x742d35Cc6634C0532925a3b844Bc454e4438f44e' \
+  'https://learn-ledger-api.vercel.app/api/userProfile?wallet=0x742d35Cc6634C0532925a3b844Bc454e4438f44e&role=freelancer' \
   -H 'accept: application/json'
 ```
 

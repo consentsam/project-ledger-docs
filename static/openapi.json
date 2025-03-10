@@ -418,12 +418,25 @@
         },
         "parameters": {
             "walletAddressParam": {
-                "name": "walletAddress",
+                "name": "wallet",
                 "in": "query",
                 "description": "Ethereum wallet address",
                 "required": true,
                 "schema": {
                     "$ref": "#/components/schemas/WalletAddress"
+                }
+            },
+            "roleParam": {
+                "name": "role",
+                "in": "query",
+                "description": "User role (company or freelancer)",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "company",
+                        "freelancer"
+                    ]
                 }
             },
             "projectIdParam": {
@@ -1008,6 +1021,9 @@
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/walletAddressParam"
+                    },
+                    {
+                        "$ref": "#/components/parameters/roleParam"
                     }
                 ],
                 "responses": {
