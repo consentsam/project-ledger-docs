@@ -1039,70 +1039,92 @@
                     "message": {
                       "type": "string"
                     },
-                    "errors": {
+                    "data": {
                       "type": "object",
                       "properties": {
+                        "id": {
+                          "type": "string"
+                        },
                         "walletAddress": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
+                          "type": "string"
+                        },
+                        "freelancerName": {
+                          "type": "string"
+                        },
+                        "skills": {
+                          "type": "string"
+                        },
+                        "profilePicUrl": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
                         }
                       },
                       "required": [
-                        "walletAddress"
+                        "id",
+                        "walletAddress",
+                        "freelancerName",
+                        "skills",
+                        "profilePicUrl",
+                        "createdAt",
+                        "updatedAt"
                       ]
                     }
                   },
                   "required": [
                     "isSuccess",
                     "message",
-                    "errors"
+                    "data"
                   ]
                 },
                 "examples": {
-                  "actual": {
-                    "value": {
-                      "isSuccess": false,
-                      "message": "Freelancer profile with this wallet address already exists",
-                      "errors": {
-                        "walletAddress": [
-                          "This wallet address is already registered with a profile"
-                        ]
-                      }
-                    }
-                  },
                   "response": {
                     "value": {
-                      "isSuccess": false,
-                      "message": "Freelancer profile with this wallet address already exists",
-                      "errors": {
-                        "walletAddress": [
-                          "This wallet address is already registered with a profile"
-                        ]
+                      "isSuccess": true,
+                      "message": "Freelancer profile created successfully",
+                      "data": {
+                        "id": "cf34dfff-6931-4096-b243-ca6f7cf3d2d8",
+                        "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f67e",
+                        "freelancerName": "Test User",
+                        "skills": "JavaScript, React, Web3",
+                        "profilePicUrl": "",
+                        "createdAt": "2025-03-10T09:28:59.321Z",
+                        "updatedAt": "2025-03-10T09:28:59.321Z"
                       }
                     }
                   },
                   "company": {
                     "value": {
-                      "isSuccess": false,
-                      "message": "Company profile with this wallet address already exists",
-                      "errors": {
-                        "walletAddress": [
-                          "This wallet address is already registered with a profile"
-                        ]
+                      "isSuccess": true,
+                      "message": "Company profile created successfully",
+                      "data": {
+                        "id": "9f3d59a8-b899-4971-9ac2-04cb5aa30fdd",
+                        "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f47e",
+                        "companyName": "Blockchain Innovations Inc.",
+                        "shortDescription": "",
+                        "logoUrl": "",
+                        "createdAt": "2025-03-10T07:19:03.882Z",
+                        "updatedAt": "2025-03-10T07:19:03.882Z"
                       }
                     },
                     "summary": "Company response example"
                   },
                   "freelancer": {
                     "value": {
-                      "isSuccess": false,
-                      "message": "Freelancer profile with this wallet address already exists",
-                      "errors": {
-                        "walletAddress": [
-                          "This wallet address is already registered with a profile"
-                        ]
+                      "isSuccess": true,
+                      "message": "Freelancer profile created successfully",
+                      "data": {
+                        "id": "cf34dfff-6931-4096-b243-ca6f7cf3d2d8",
+                        "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f67e",
+                        "freelancerName": "Test User",
+                        "skills": "JavaScript, React, Web3",
+                        "profilePicUrl": "",
+                        "createdAt": "2025-03-10T09:28:59.321Z",
+                        "updatedAt": "2025-03-10T09:28:59.321Z"
                       }
                     },
                     "summary": "Freelancer response example"
@@ -1190,7 +1212,34 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "isSuccess": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "walletAddress": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "walletAddress"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "isSuccess",
+                    "message",
+                    "errors"
+                  ]
                 },
                 "example": {
                   "isSuccess": false,
@@ -1199,6 +1248,43 @@
                     "walletAddress": [
                       "This wallet address is already registered with a profile"
                     ]
+                  }
+                },
+                "examples": {
+                  "company": {
+                    "value": {
+                      "isSuccess": false,
+                      "message": "Company profile with this wallet address already exists",
+                      "errors": {
+                        "walletAddress": [
+                          "This wallet address is already registered with a profile"
+                        ]
+                      }
+                    },
+                    "summary": "Company response example"
+                  },
+                  "response": {
+                    "value": {
+                      "isSuccess": false,
+                      "message": "Freelancer profile with this wallet address already exists",
+                      "errors": {
+                        "walletAddress": [
+                          "This wallet address is already registered with a profile"
+                        ]
+                      }
+                    }
+                  },
+                  "freelancer": {
+                    "value": {
+                      "isSuccess": false,
+                      "message": "Freelancer profile with this wallet address already exists",
+                      "errors": {
+                        "walletAddress": [
+                          "This wallet address is already registered with a profile"
+                        ]
+                      }
+                    },
+                    "summary": "Freelancer response example"
                   }
                 }
               }
@@ -1293,20 +1379,6 @@
                       }
                     },
                     "summary": "Company response example"
-                  },
-                  "actual": {
-                    "value": {
-                      "isSuccess": true,
-                      "data": {
-                        "id": "9f3d59a8-b899-4971-9ac2-04cb5aa30fcc",
-                        "walletAddress": "0x742d35cc6634c0532925a3b844bc454e4438f44e",
-                        "companyName": "Blockchain Innovations Inc.",
-                        "shortDescription": "",
-                        "logoUrl": "",
-                        "createdAt": "2025-03-10T07:19:03.882Z",
-                        "updatedAt": "2025-03-10T07:19:03.882Z"
-                      }
-                    }
                   },
                   "response": {
                     "value": {
@@ -1559,12 +1631,6 @@
                   ]
                 },
                 "examples": {
-                  "actual": {
-                    "value": {
-                      "isSuccess": true,
-                      "data": []
-                    }
-                  },
                   "response": {
                     "value": {
                       "isSuccess": true,
