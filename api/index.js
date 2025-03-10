@@ -1,9 +1,6 @@
 const { getPool } = require('./db');
 
 module.exports = async (req, res) => {
-  console.log('API called with method:', req.method);
-  console.log('API URL:', req.url);
-  
   // Enable CORS for all origins
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,13 +12,11 @@ module.exports = async (req, res) => {
   
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
-    console.log('Handling OPTIONS request for CORS preflight');
     return res.status(200).end();
   }
   
   // Add a health check endpoint
   if (req.url === '/api/health' || req.url === '/health') {
-    console.log('Health check endpoint called');
     return res.status(200).json({
       isSuccess: true,
       message: 'API is healthy',
@@ -33,23 +28,9 @@ module.exports = async (req, res) => {
     // Only proceed with DB operations if method is POST
     if (req.method === 'POST') {
       try {
-        console.log('Attempting database connection');
         const pool = getPool();
         
-        if (!pool) {
-          console.log('No database pool available');
-          return res.status(200).json({
-            isSuccess: true,
-            message: 'API is working but database is not configured',
-            data: {
-              apiVersion: '1.0.0',
-              message: 'API is operational but database features are disabled'
-            }
-          });
-        }
-        
         // Basic query to test connection
-        console.log('Executing database query');
         const result = await pool.query('SELECT NOW()');
         
         return res.status(200).json({
