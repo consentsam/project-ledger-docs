@@ -316,61 +316,98 @@
                 }
             },
             "UserProfile": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "example": "c90df756-8eb9-47f7-9f3e-6d5d6d669380"
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "example": "c90df756-8eb9-47f7-9f3e-6d5d6d669380"
+                            },
+                            "walletAddress": {
+                                "$ref": "#/components/schemas/WalletAddress"
+                            },
+                            "freelancerName": {
+                                "type": "string",
+                                "example": "John Doe"
+                            },
+                            "skills": {
+                                "type": "string",
+                                "description": "Skills for freelancer profiles (comma-separated string)",
+                                "example": "JavaScript, React, Web3"
+                            },
+                            "profilePicUrl": {
+                                "type": "string",
+                                "format": "uri",
+                                "example": ""
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2025-03-10T08:39:34.738Z"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2025-03-10T08:39:34.738Z"
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "walletAddress",
+                            "freelancerName",
+                            "skills",
+                            "profilePicUrl",
+                            "createdAt",
+                            "updatedAt"
+                        ]
                     },
-                    "walletAddress": {
-                        "$ref": "#/components/schemas/WalletAddress"
-                    },
-                    "role": {
-                        "type": "string",
-                        "enum": [
-                            "company",
-                            "freelancer"
-                        ],
-                        "example": "freelancer"
-                    },
-                    "companyName": {
-                        "type": "string",
-                        "example": "Blockchain Innovations Inc."
-                    },
-                    "companyWebsite": {
-                        "type": "string",
-                        "format": "uri",
-                        "example": "https://blockchain-innovations.com"
-                    },
-                    "freelancerName": {
-                        "type": "string",
-                        "example": "John Doe"
-                    },
-                    "skills": {
-                        "type": "string",
-                        "description": "Skills for freelancer profiles (comma-separated string)",
-                        "example": "JavaScript, React, Web3"
-                    },
-                    "profilePicUrl": {
-                        "type": "string",
-                        "format": "uri",
-                        "example": ""
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2025-03-10T08:39:34.738Z"
-                    },
-                    "updatedAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2025-03-10T08:39:34.738Z"
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "example": "2c58380e-00d3-4919-bd26-76e6e7ef9527"
+                            },
+                            "walletAddress": {
+                                "$ref": "#/components/schemas/WalletAddress"
+                            },
+                            "companyName": {
+                                "type": "string",
+                                "example": "Test Company"
+                            },
+                            "shortDescription": {
+                                "type": "string",
+                                "example": ""
+                            },
+                            "logoUrl": {
+                                "type": "string",
+                                "format": "uri",
+                                "example": ""
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2025-03-10T09:14:25.763Z"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2025-03-10T09:14:25.763Z"
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "walletAddress",
+                            "companyName",
+                            "shortDescription",
+                            "logoUrl",
+                            "createdAt",
+                            "updatedAt"
+                        ]
                     }
-                },
-                "required": [
-                    "id",
-                    "walletAddress"
                 ]
             },
             "ProjectStats": {
@@ -745,7 +782,7 @@
                 }
             },
             "CreateProject": {
-                "description": "Project creation information",
+                "description": "Project creation information. Note: The API implementation may have issues with field validation. If you encounter errors, please report them.",
                 "required": true,
                 "content": {
                     "application/json": {
