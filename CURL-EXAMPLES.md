@@ -21,6 +21,8 @@ curl -X 'POST' \
 
 ### Register a Freelancer
 
+> ⚠️ **Known Issue**: There's a naming discrepancy between the API validation and the database schema. The API validation requires `freelancerName` in the request even though the database column is named `name`. You must use `freelancerName` as shown below.
+
 ```bash
 curl -X 'POST' \
   'https://learn-ledger-api.vercel.app/api/register' \
@@ -58,6 +60,8 @@ curl -X 'PUT' \
 ```
 
 ### Update Freelancer Profile
+
+> ⚠️ **Known Issue**: Similar to registration, use `freelancerName` for updating profiles.
 
 ```bash
 curl -X 'PUT' \

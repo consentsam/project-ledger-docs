@@ -17,7 +17,9 @@ The API specification has been updated to use `role` instead of `userType` for u
 
 ## Important Note for Freelancer Registration
 
-When registering a freelancer profile, make sure to use the `freelancerName` field (not `name`) as shown in the example below:
+⚠️ **Known Issue**: There is currently a naming discrepancy in the API's freelancer registration process. The API validation expects `freelancerName` in the request, but the database uses a column named `name`. 
+
+For now, you must use the `freelancerName` field in your API requests:
 
 ```json
 {
@@ -27,6 +29,8 @@ When registering a freelancer profile, make sure to use the `freelancerName` fie
   "skills": ["JavaScript", "React", "Web3"]
 }
 ```
+
+The development team is working to resolve this inconsistency.
 
 ## Local Development
 

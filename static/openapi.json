@@ -556,7 +556,6 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "type": "object",
                             "oneOf": [
                                 {
                                     "type": "object",
@@ -602,6 +601,7 @@
                                         },
                                         "freelancerName": {
                                             "type": "string",
+                                            "description": "⚠️ IMPORTANT: The API validation requires 'freelancerName' even though the database column is named 'name'.",
                                             "example": "John Doe"
                                         },
                                         "skills": {
@@ -609,6 +609,7 @@
                                             "items": {
                                                 "type": "string"
                                             },
+                                            "description": "Skills for freelancer profiles",
                                             "example": [
                                                 "JavaScript",
                                                 "React",
@@ -619,8 +620,7 @@
                                     "required": [
                                         "walletAddress",
                                         "role",
-                                        "freelancerName",
-                                        "skills"
+                                        "freelancerName"
                                     ]
                                 }
                             ]
