@@ -65,6 +65,8 @@ curl -X 'GET' \
 
 ### Update User Profile
 
+> ⚠️ **Note**: The PUT /userProfile endpoint is currently experiencing issues with request body parsing. We are working on a fix. In the meantime, please use the GET endpoint to retrieve user profiles.
+
 ```bash
 curl -X 'PUT' \
   'https://learn-ledger-api.vercel.app/api/userProfile' \
@@ -79,6 +81,8 @@ curl -X 'PUT' \
 ```
 
 ### Update Freelancer Profile
+
+> ⚠️ **Note**: The PUT /userProfile endpoint is currently experiencing issues with request body parsing. We are working on a fix. In the meantime, please use the GET endpoint to retrieve user profiles.
 
 The API supports providing skills in two different formats:
 
