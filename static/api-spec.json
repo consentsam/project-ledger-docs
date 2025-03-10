@@ -325,7 +325,7 @@
           "walletAddress": {
             "$ref": "#/components/schemas/WalletAddress"
           },
-          "userType": {
+          "role": {
             "type": "string",
             "enum": [
               "company",
@@ -337,7 +337,7 @@
         "required": [
           "id",
           "walletAddress",
-          "userType"
+          "role"
         ]
       },
       "ProjectStats": {
@@ -540,7 +540,7 @@
                     "walletAddress": {
                       "$ref": "#/components/schemas/WalletAddress"
                     },
-                    "userType": {
+                    "role": {
                       "type": "string",
                       "enum": [
                         "company"
@@ -559,7 +559,7 @@
                   },
                   "required": [
                     "walletAddress",
-                    "userType",
+                    "role",
                     "companyName"
                   ]
                 },
@@ -569,7 +569,7 @@
                     "walletAddress": {
                       "$ref": "#/components/schemas/WalletAddress"
                     },
-                    "userType": {
+                    "role": {
                       "type": "string",
                       "enum": [
                         "freelancer"
@@ -594,7 +594,7 @@
                   },
                   "required": [
                     "walletAddress",
-                    "userType",
+                    "role",
                     "name",
                     "skills"
                   ]
@@ -605,7 +605,7 @@
               "company": {
                 "value": {
                   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-                  "userType": "company",
+                  "role": "company",
                   "companyName": "Blockchain Innovations Inc.",
                   "companyWebsite": "https://blockchain-innovations.com"
                 }
@@ -613,7 +613,7 @@
               "freelancer": {
                 "value": {
                   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-                  "userType": "freelancer",
+                  "role": "freelancer",
                   "name": "John Doe",
                   "skills": [
                     "JavaScript",
@@ -636,6 +636,14 @@
               "properties": {
                 "walletAddress": {
                   "$ref": "#/components/schemas/WalletAddress"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "company",
+                    "freelancer"
+                  ],
+                  "example": "company"
                 },
                 "companyName": {
                   "type": "string",
@@ -671,6 +679,7 @@
               "company": {
                 "value": {
                   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+                  "role": "company",
                   "companyName": "Updated Company Name",
                   "companyWebsite": "https://updated-site.com"
                 }
@@ -678,6 +687,7 @@
               "freelancer": {
                 "value": {
                   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+                  "role": "freelancer",
                   "name": "Updated Name",
                   "skills": [
                     "JavaScript",
