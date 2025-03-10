@@ -29,7 +29,7 @@ curl -X 'POST' \
   -d '{
   "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
   "role": "freelancer",
-  "name": "John Doe",
+  "freelancerName": "John Doe",
   "skills": ["JavaScript", "React", "Web3"]
 }'
 ```
@@ -54,6 +54,21 @@ curl -X 'PUT' \
   "role": "company",
   "companyName": "Updated Company Name",
   "companyWebsite": "https://updated-site.com"
+}'
+```
+
+### Update Freelancer Profile
+
+```bash
+curl -X 'PUT' \
+  'https://learn-ledger-api.vercel.app/api/userProfile' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+  "role": "freelancer",
+  "freelancerName": "Updated Name",
+  "skills": ["JavaScript", "React", "Web3", "Solidity"]
 }'
 ```
 
