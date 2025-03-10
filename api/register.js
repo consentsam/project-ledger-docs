@@ -51,8 +51,8 @@ module.exports = async (req, res) => {
       errors.companyName = ['Company name is required for company profiles'];
     }
     
-    if (body.role === 'freelancer' && !body.name) {
-      errors.name = ['Freelancer name is required for freelancer profiles'];
+    if (body.role === 'freelancer' && !body.freelancerName) {
+      errors.freelancerName = ['Freelancer name is required for freelancer profiles'];
     }
     
     // Return validation errors if any

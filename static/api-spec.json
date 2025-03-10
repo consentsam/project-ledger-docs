@@ -230,7 +230,7 @@
                         "format": "uuid",
                         "example": "123e4567-e89b-12d3-a456-426614174000"
                     },
-                    "name": {
+                    "freelancerName": {
                         "type": "string",
                         "example": "John Doe"
                     },
@@ -252,7 +252,7 @@
                 },
                 "required": [
                     "id",
-                    "name",
+                    "freelancerName",
                     "walletAddress",
                     "createdAt"
                 ]
@@ -576,7 +576,7 @@
                                             ],
                                             "example": "freelancer"
                                         },
-                                        "name": {
+                                        "freelancerName": {
                                             "type": "string",
                                             "example": "John Doe"
                                         },
@@ -595,7 +595,7 @@
                                     "required": [
                                         "walletAddress",
                                         "role",
-                                        "name",
+                                        "freelancerName",
                                         "skills"
                                     ]
                                 }
@@ -614,7 +614,7 @@
                                 "value": {
                                     "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
                                     "role": "freelancer",
-                                    "name": "John Doe",
+                                    "freelancerName": "John Doe",
                                     "skills": [
                                         "JavaScript",
                                         "React",
@@ -654,7 +654,7 @@
                                     "format": "uri",
                                     "example": "https://updated-site.com"
                                 },
-                                "name": {
+                                "freelancerName": {
                                     "type": "string",
                                     "example": "Updated Name"
                                 },
@@ -688,7 +688,7 @@
                                 "value": {
                                     "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
                                     "role": "freelancer",
-                                    "name": "Updated Name",
+                                    "freelancerName": "Updated Name",
                                     "skills": [
                                         "JavaScript",
                                         "React",
