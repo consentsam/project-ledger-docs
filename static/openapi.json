@@ -230,7 +230,7 @@
                         "format": "uuid",
                         "example": "123e4567-e89b-12d3-a456-426614174000"
                     },
-                    "name": {
+                    "freelancerName": {
                         "type": "string",
                         "example": "John Doe"
                     },
@@ -253,7 +253,7 @@
                 },
                 "required": [
                     "id",
-                    "name",
+                    "freelancerName",
                     "walletAddress",
                     "createdAt"
                 ]
@@ -296,7 +296,7 @@
                         "type": "string",
                         "format": "date-time"
                     },
-                    "name": {
+                    "freelancerName": {
                         "type": "string",
                         "example": "John Doe"
                     }
@@ -343,20 +343,14 @@
                         "format": "uri",
                         "example": "https://blockchain-innovations.com"
                     },
-                    "name": {
+                    "freelancerName": {
                         "type": "string",
                         "example": "John Doe"
                     },
                     "skills": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "example": [
-                            "JavaScript",
-                            "React",
-                            "Web3"
-                        ]
+                        "type": "string",
+                        "description": "Skills for freelancer profiles (comma-separated string)",
+                        "example": "JavaScript, React, Web3"
                     }
                 },
                 "required": [
@@ -679,21 +673,13 @@
                                     "format": "uri",
                                     "example": "https://updated-site.com"
                                 },
-                                "name": {
+                                "freelancerName": {
                                     "type": "string",
                                     "example": "Updated Name"
                                 },
                                 "skills": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    },
-                                    "example": [
-                                        "JavaScript",
-                                        "React",
-                                        "Web3",
-                                        "Solidity"
-                                    ]
+                                    "type": "string",
+                                    "example": "JavaScript, React, Web3, Solidity"
                                 }
                             },
                             "required": [
@@ -713,13 +699,8 @@
                                 "value": {
                                     "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
                                     "role": "freelancer",
-                                    "name": "Updated Name",
-                                    "skills": [
-                                        "JavaScript",
-                                        "React",
-                                        "Web3",
-                                        "Solidity"
-                                    ]
+                                    "freelancerName": "Updated Name",
+                                    "skills": "JavaScript, React, Web3, Solidity"
                                 }
                             }
                         }
