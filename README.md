@@ -12,6 +12,10 @@ This repository contains the API documentation for the ProjectLedger platform, r
 
 The API specification has been updated to use `role` instead of `userType` for user registration and profile management. This change ensures compatibility with the current API implementation.
 
+### Known Issues
+
+- **Freelancer Registration**: The API expects `freelancerName` in requests, but the database uses a column named `name`. This mismatch causes a 500 error when registering freelancers. Until this is fixed on the server side, please be aware that freelancer registration might fail.
+
 ## Local Development
 
 To run the documentation locally:
