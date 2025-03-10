@@ -21,7 +21,9 @@ curl -X 'POST' \
 
 ### Register a Freelancer
 
-> ⚠️ **Important Note**: The API expects `skills` to be a comma-separated string, not an array.
+The API supports providing skills in two different formats:
+
+#### Option 1: Skills as a comma-separated string (Recommended for backward compatibility)
 
 ```bash
 curl -X 'POST' \
@@ -35,6 +37,23 @@ curl -X 'POST' \
   "skills": "JavaScript, React, Web3"
 }'
 ```
+
+#### Option 2: Skills as an array of strings
+
+```bash
+curl -X 'POST' \
+  'https://learn-ledger-api.vercel.app/api/register' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+  "role": "freelancer",
+  "freelancerName": "John Doe",
+  "skills": ["JavaScript", "React", "Web3"]
+}'
+```
+
+> ⚠️ **Note**: Both formats are accepted by the API. The skills are stored as a comma-separated string in the database regardless of which format you use to submit them.
 
 ### Get User Profile
 
@@ -61,7 +80,9 @@ curl -X 'PUT' \
 
 ### Update Freelancer Profile
 
-> ⚠️ **Important Note**: The API expects `skills` to be a comma-separated string, not an array.
+The API supports providing skills in two different formats:
+
+#### Option 1: Skills as a comma-separated string
 
 ```bash
 curl -X 'PUT' \
@@ -75,6 +96,23 @@ curl -X 'PUT' \
   "skills": "JavaScript, React, Web3, Solidity"
 }'
 ```
+
+#### Option 2: Skills as an array of strings
+
+```bash
+curl -X 'PUT' \
+  'https://learn-ledger-api.vercel.app/api/userProfile' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "walletAddress": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+  "role": "freelancer",
+  "freelancerName": "Updated Name",
+  "skills": ["JavaScript", "React", "Web3", "Solidity"]
+}'
+```
+
+> ⚠️ **Note**: Both formats are accepted by the API. The skills are stored as a comma-separated string in the database regardless of which format you use to submit them.
 
 ## Project Management
 
